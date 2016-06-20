@@ -68,6 +68,10 @@
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/bazy.iml
+.idea/copyright/
+.idea/modules.xml
+
 
 # Gradle:
 .idea/gradle.xml
