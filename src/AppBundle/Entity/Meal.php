@@ -3,6 +3,10 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\MealType;
+use AppBundle\Entity\User;
+use Doctrine\ORM\Mapping\OneToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * Meal
@@ -29,9 +33,10 @@ class Meal
     private $time;
 
     /**
-     * @var int
+     * @var MealType
      *
-     * @ORM\Column(name="type", type="bigint")
+     * @OneToOne(targetEntity="MealType")
+     * @JoinColumn(name="mealType_id", referencedColumnName="id")
      */
     private $type;
 
@@ -41,6 +46,12 @@ class Meal
      * @ORM\Column(name="kcal", type="integer")
      */
     private $kcal;
+
+    /**
+     * @OneToOne(targetEntity="User")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
 
 
     /**
@@ -84,7 +95,7 @@ class Meal
      *
      * @return Meal
      */
-    public function setType($type)
+    public function setType(MealType $type)
     {
         $this->type = $type;
 
@@ -124,5 +135,23 @@ class Meal
     {
         return $this->kcal;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+    }
+
+
 }
 
