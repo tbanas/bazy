@@ -1,0 +1,20 @@
+{
+  "name": "bazy",
+  "homepage": "https://github.com/tbanas/bazy",
+  "authors": [
+    "Tomasz Banaś <tomek.kacper@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
