@@ -5,7 +5,8 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\MealType;
 use AppBundle\Entity\User;
-use Doctrine\ORM\Mapping\OneToOne;
+use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
@@ -35,7 +36,7 @@ class Meal
     /**
      * @var MealType
      *
-     * @OneToOne(targetEntity="MealType")
+     * @ManyToOne(targetEntity="MealType")
      * @JoinColumn(name="mealType_id", referencedColumnName="id")
      */
     private $type;
@@ -48,7 +49,7 @@ class Meal
     private $kcal;
 
     /**
-     * @OneToOne(targetEntity="User")
+     * @ManyToOne(targetEntity="User")
      * @JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
