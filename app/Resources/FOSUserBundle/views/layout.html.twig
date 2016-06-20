@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <section id="main">
+            <header>
+                <h1>{% block sectionTitle %}{% endblock %}</h1>
+                <span class="avatar"><img src="{{ asset("assets/img/avatar.jpg") }}" alt=""/></span>
+            </header>
+            {% block fos_user_content %}
+            {% endblock %}
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="copyright">
+                <li>&copy; Tomasz Banaś</li>
+                <li>Bazy danych</li>
+            </ul>
+        </footer>
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="{{ asset("assets/css/ie9.css") }}" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href={{ asset("assets/css/ie8.css") }}"" /><![endif]-->
+    <noscript><link rel="stylesheet" href="{{ asset("assets/css/noscript.css") }}" /></noscript>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!--[if lte IE 8]><script src="{{ asset("assets/js/html5shiv.js") }}"></script><![endif]-->
+    <!--[if lte IE 8]><script src="{{ asset("assets/js/respond.min.js") }}"></script><![endif]-->
+    <script>
+        if ('addEventListener' in window) {
+            window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+            document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+        }
+    </script>
+{% endblock %}
+
+
+
+        {#<div>#}
+            {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+                {#{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |#}
+                {#<a href="{{ path('fos_user_security_logout') }}">#}
+                    {#{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}#}
+                {#</a>#}
+            {#{% else %}#}
+                {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+            {#{% endif %}#}
+        {#</div>#}
