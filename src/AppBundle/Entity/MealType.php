@@ -28,6 +28,15 @@ class MealType
      */
     private $name;
 
+    /**
+     * MealType constructor.
+     * @param string $name
+     */
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+
 
     /**
      * Get id
