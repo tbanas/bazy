@@ -1,7 +1,6 @@
 <ul class="nav nav-pills">
     <li><a href="{{ path('meal_index') }}">Meals</a></li>
-    <li role="presentation"><a href="#">Profile</a></li>
-    <li role="presentation"><a href="#">Messages</a></li>
+    <li><a href="{{ path('meal_new') }}">Add meal</a></li>
     <li class="pull-right">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <a href="{{ path('fos_user_security_logout') }}">
