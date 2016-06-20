@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+
+        <!-- Main -->
+        <section id="main" class="container">
+            <header>
+                {{ include('::_menu.html.twig') }}
+                <span class="avatar">
+                    <img src="{{ asset("assets/img/avatar.jpg") }}" alt=""/>
+                    <h1>Meal</h1>
+                </span>
+            </header>
+
+            <table>
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ meal.id }}</td>
+                </tr>
+                <tr>
+                    <th>Time</th>
+                    <td>{% if meal.time %}{{ meal.time|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td>{{ meal.type }}</td>
+                </tr>
+                <tr>
+                    <th>Kcal</th>
+                    <td>{{ meal.kcal }}</td>
+                </tr>
+                <tr>
+                    <th>User</th>
+                    <td>{{ meal.user }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('meal_index') }}">Back to the list</a>
+                </li>
+                <li>
+                    <a href="{{ path('meal_edit', { 'id': meal.id }) }}">Edit</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="copyright">
+                <li>&copy; Tomasz Banaś</li>
+                <li>Bazy danych</li>
+            </ul>
+        </footer>
+
+    </div>
+{% endblock %}

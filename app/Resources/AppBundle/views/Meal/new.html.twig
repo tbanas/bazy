@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <!-- Wrapper -->
     <div id="wrapper">
 
         <!-- Main -->
@@ -12,6 +11,17 @@
                     <img src="{{ asset("assets/img/avatar.jpg") }}" alt=""/>
                 </span>
             </header>
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="Create"/>
+            {{ form_end(form) }}
+
+            <ul>
+                <li>
+                    <a href="{{ path('meal_index') }}">Back to the list</a>
+                </li>
+            </ul>
         </section>
 
         <!-- Footer -->

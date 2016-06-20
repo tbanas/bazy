@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Meal;
 use AppBundle\Form\MealType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * Meal controller.
@@ -21,6 +22,7 @@ class MealController extends Controller
      *
      * @Route("/", name="meal_index")
      * @Method("GET")
+     * @Template
      */
     public function indexAction()
     {
@@ -28,9 +30,9 @@ class MealController extends Controller
 
         $meals = $em->getRepository('AppBundle:Meal')->findAll();
 
-        return $this->render('meal/index.html.twig', array(
+        return array(
             'meals' => $meals,
-        ));
+        );
     }
 
     /**
@@ -38,6 +40,7 @@ class MealController extends Controller
      *
      * @Route("/new", name="meal_new")
      * @Method({"GET", "POST"})
+     * @Template
      */
     public function newAction(Request $request)
     {
@@ -55,10 +58,10 @@ class MealController extends Controller
             return $this->redirectToRoute('meal_show', array('id' => $meal->getId()));
         }
 
-        return $this->render('meal/new.html.twig', array(
+        return array(
             'meal' => $meal,
             'form' => $form->createView(),
-        ));
+        );
     }
 
     /**
@@ -66,15 +69,16 @@ class MealController extends Controller
      *
      * @Route("/{id}", name="meal_show")
      * @Method("GET")
+     * @Template
      */
     public function showAction(Meal $meal)
     {
         $deleteForm = $this->createDeleteForm($meal);
 
-        return $this->render('meal/show.html.twig', array(
+        return array(
             'meal' => $meal,
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
@@ -82,6 +86,7 @@ class MealController extends Controller
      *
      * @Route("/{id}/edit", name="meal_edit")
      * @Method({"GET", "POST"})
+     * @Template
      */
     public function editAction(Request $request, Meal $meal)
     {
@@ -97,11 +102,11 @@ class MealController extends Controller
             return $this->redirectToRoute('meal_edit', array('id' => $meal->getId()));
         }
 
-        return $this->render('meal/edit.html.twig', array(
+        return array(
             'meal' => $meal,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
