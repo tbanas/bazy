@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\User;
+
 /**
  * MealRepository
  *
@@ -10,4 +12,13 @@ namespace AppBundle\Repository;
  */
 class MealRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllByUser(User $user){
+        $qb = $this->createQueryBuilder('m')
+            ->join('m.user', 'u')
+            ->where('m.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery();
+
+        return $qb->getResult();
+    }
 }

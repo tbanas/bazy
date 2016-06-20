@@ -28,7 +28,7 @@ class MealController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $meals = $em->getRepository('AppBundle:Meal')->findAll();
+        $meals = $em->getRepository('AppBundle:Meal')->findAllByUser($this->getUser());
 
         return array(
             'meals' => $meals,
